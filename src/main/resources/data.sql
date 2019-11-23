@@ -1,0 +1,1 @@
+insert into musiclist values (1, 'raboni', 4.34, 'judikay');
