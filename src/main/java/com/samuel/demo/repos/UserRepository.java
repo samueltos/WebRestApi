@@ -1,10 +1,13 @@
 package com.samuel.demo.repos;
 
-import org.springframework.data.repository.CrudRepository;
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.samuel.demo.model.MusicList;
 
-public interface UserRepository extends CrudRepository<MusicList, Integer> {
 
-	public Iterable<MusicList> findByArtist(String artist);
+public interface UserRepository extends JpaRepository<MusicList, Integer> {
+
+	public List<MusicList> findByArtist(String artist);
 }

@@ -1,5 +1,7 @@
 package com.samuel.demo.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,7 +47,7 @@ public class MusicController {
 	
 	@RequestMapping("/MusicList/{artist}")
 	@ResponseBody
-	public Iterable<MusicList> index(@PathVariable("artist") String artist) {
+	public List<MusicList> index(@PathVariable("artist") String artist) {
 		return userRepository.findByArtist(artist);
 	}
 	
