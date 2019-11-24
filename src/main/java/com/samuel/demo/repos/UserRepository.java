@@ -6,4 +6,5 @@ import com.samuel.demo.model.MusicList;
 
 public interface UserRepository extends CrudRepository<MusicList, Integer> {
 
+	public Iterable<MusicList> findByArtist(String artist);
 }

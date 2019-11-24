@@ -3,6 +3,7 @@ package com.samuel.demo.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,22 +30,23 @@ public class MusicController {
 		
 	}
 	
-	@GetMapping(path="/all")
-	public @ResponseBody Iterable<MusicList> getAllMusicList(){
-		return userRepository.findAll();
-	}
-	
 
 	@RequestMapping(path="/add")
 	public @ResponseBody String add(MusicList mL) { 
 		userRepository.save(mL);
-		return "saved";
-		
+		return "saved";		
 	}
 	
-	@RequestMapping("/")
-	public String index() {
-		return "index.jsp";
+	@GetMapping("/MusicList")
+	public @ResponseBody Iterable<MusicList> getAllMusicList(){
+		return userRepository.findAll();
+	}
+	
+	
+	@RequestMapping("/MusicList/{artist}")
+	@ResponseBody
+	public Iterable<MusicList> index(@PathVariable("artist") String artist) {
+		return userRepository.findByArtist(artist);
 	}
 	
 }
