@@ -29,10 +29,8 @@ public class MusicController {
 		musicList.setArtist(artist);
 		userRepository.save(musicList);
 		return "saved";
-		
 	}
 	
-
 	@RequestMapping(path="/add")
 	public @ResponseBody String add(MusicList mL) { 
 		userRepository.save(mL);
@@ -44,11 +42,15 @@ public class MusicController {
 		return userRepository.findAll();
 	}
 	
-	
 	@RequestMapping("/MusicList/{artist}")
 	@ResponseBody
 	public List<MusicList> index(@PathVariable("artist") String artist) {
 		return userRepository.findByArtist(artist);
+	}
+	
+	@RequestMapping("/")
+	public String index() {
+		return "index.jsp";
 	}
 	
 }
