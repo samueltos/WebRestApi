@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.samuel.demo.model.MusicList;
@@ -21,15 +19,15 @@ public class MusicController {
 	@Autowired
 	private UserRepository userRepository;
 	
-	@PostMapping(path="/add")
-	public @ResponseBody String addNewSong(@RequestParam String songTitle, @RequestParam double songDuration, @RequestParam String artist) {
-		MusicList musicList = new MusicList();
-		musicList.setSongTitle(songTitle);
-		musicList.setSongDuration(songDuration);
-		musicList.setArtist(artist);
-		userRepository.save(musicList);
-		return "saved";
-	}
+//	@PostMapping(path="/add")
+//	public @ResponseBody String addNewSong(@RequestParam String songTitle, @RequestParam double songDuration, @RequestParam String artist) {
+//		MusicList musicList = new MusicList();
+//		musicList.setSongTitle(songTitle);
+//		musicList.setSongDuration(songDuration);
+//		musicList.setArtist(artist);
+//		userRepository.save(musicList);
+//		return "saved";
+//	}
 	
 	@RequestMapping(path="/add")
 	public @ResponseBody String add(MusicList mL) { 
